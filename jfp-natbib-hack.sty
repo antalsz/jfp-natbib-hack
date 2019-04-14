@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{jfp-natbib-hack}[2019/04/14 v1.0 Hack natbib to work with JFP]
+
+\renewcommand*{\bibsection}{\section*{\refname}}
+\renewcommand*{\bibpreamble}{\addcontentsline{toc}{section}{\refname}}
+\renewcommand*{\bibfont}{\normalfont\small\rmfamily}
+\bibhang=9pt
+\bibsep=0pt
+\apptocmd
+  {\thebibliography}
+  {\parskip 2\p@ \@plus .1\p@
+   \clubpenalty\z@ \widowpenalty\@M}
+  {}
+  {\PackageError{jfp-natbib-hack}%
+                {Could not patch \string\thebibliography}%
+                {This package is a hack, and part of the hackery failed.}}
